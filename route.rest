@@ -1,0 +1,38 @@
+GET http://localhost:3000/users
+
+###
+
+GET http://localhost:3000/users/60e0eaf533218776ad839e5f
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Tim",
+    "etc": "Hello"
+}
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Tom",
+    "etc": "Hi"
+}
+
+###
+
+DELETE  http://localhost:3000/users/60e0eaf533218776ad839e5f
+
+###
+
+PATCH http://localhost:3000/users/60e0f07e702da27de22c5db6
+Content-Type: application/json
+
+{
+    "name": "Tommy",
+    "etc": "Hi"
+}
