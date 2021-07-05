@@ -28,15 +28,25 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.patch('/:id', getUser, async (req, res) => {
-    if(req.body.name !== null) {
-        res.user.name = req.body.name
-    }
-    if(req.body.etc !== null) {
-        res.user.etc = req.body.etc
-    }
+// router.patch('/:id', getUser, async (req, res) => {
+//     if(req.body.name !== null) {
+//         res.user.name = req.body.name
+//     }
+//     if(req.body.etc !== null) {
+//         res.user.etc = req.body.etc
+//     }
+//     try {
+//         const updatedUser = await res.user.save();
+//         res.json(updatedUser);
+router.patch('/:id', async (req, res) => {
     try {
-        const updatedUser = await res.user.save();
+        const updatedUser = await User.updateOne(
+            {_id: req.params.id},
+            {$set: {
+                name: req.body.name,
+                etc: req.body.etc
+            }}
+        );
         res.json(updatedUser);
     } catch(err) {
         res.status(400).json({message: err.message});
